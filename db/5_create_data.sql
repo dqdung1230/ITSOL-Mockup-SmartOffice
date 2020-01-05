@@ -45,10 +45,9 @@ INSERT INTO "MOCKUP_SMARTOFFICE"."STATUS" (ID, NAME, TYPE_ID) VALUES (AUTO_INCRE
 INSERT INTO "MOCKUP_SMARTOFFICE"."STATUS" (ID, NAME, TYPE_ID) VALUES (AUTO_INCRE_SEQ_STATUS.nextval, 'Về sớm', '4');
 commit;
 
-insert into TEAM (id,leader_id) VALUES (AUTO_INCRE_SEQ_TEAM.nextval, 2);
-insert into TEAM (id,leader_id) values (AUTO_INCRE_SEQ_TEAM.nextval, 3);
-insert into TEAM (id,leader_id) values (AUTO_INCRE_SEQ_TEAM.nextval, 4);
 insert into TEAM (id,leader_id) values (AUTO_INCRE_SEQ_TEAM.nextval, 1);
+insert into TEAM (id,leader_id) VALUES (AUTO_INCRE_SEQ_TEAM.nextval, 2);
+insert into TEAM (id,leader_id) values (AUTO_INCRE_SEQ_TEAM.nextval, 4);
 commit;
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."PROJECT" (id, name,status_id ) VALUES (AUTO_INCRE_SEQ_PROJECT.nextval, 'Smart Shop', 12);
@@ -59,20 +58,19 @@ commit;
 insert into team_project (team_id,project_id,start_date,handover_date ) values (3, 2,to_date('29/1/2019','dd/MM/yyyy'), to_date('30/11/2019','dd/MM/yyyy'));
 insert into team_project(team_id,project_id,start_date,handover_date ) values (2, 2,to_date('19/1/2019','dd/MM/yyyy'), to_date('30/6/2019','dd/MM/yyyy'));
 insert into team_project (team_id,project_id,start_date,handover_date )values (1, 3,to_date('7/2/2019','dd/MM/yyyy'), to_date('3/8/2019','dd/MM/yyyy'));
-insert into team_project (team_id,project_id,start_date,handover_date )values (4, 1,to_date('8/2/2019','dd/MM/yyyy'), to_date('17/12/2019','dd/MM/yyyy'));
+insert into team_project (team_id,project_id,start_date,handover_date )values (1, 1,to_date('8/2/2019','dd/MM/yyyy'), to_date('17/12/2019','dd/MM/yyyy'));
 insert into team_project(team_id,project_id,start_date,handover_date ) values (3, 3,to_date('20/6/2019','dd/MM/yyyy'), to_date('30/11/2019','dd/MM/yyyy'));
 commit;
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
 PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
-VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'dungdq96', '123456', null, to_date('29/12/2019', 'dd/MM/yyyy'),'Đỗ Quốc Dũng',to_date('19/5/2019','dd/MM/yyyy'),
-'dungdq96@gmail.com', '0986198276', 'dungdq96', 'Nhân viên', 'Hà Nội', 'PTIT', '2019', '1', '1', '2', '2','0','1',to_date('30/12/1997','dd/MM/yyyy'));
+VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'dungdq96', '123456', null, to_date('29/12/2019', 'dd/MM/yyyy'),'Đỗ Quang Dũng',to_date('19/5/2019','dd/MM/yyyy'),
+'dungdq96@gmail.com', '0986198276', 'dungdq96', 'Nhân viên', 'Hà Nội', 'PTIT', '2019', '1', '2', '2', '2','0','1',to_date('30/12/1997','dd/MM/yyyy'));
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
 PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
 VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'tranvancuong97', '123456', null, to_date('31/12/2019', 'dd/MM/yyyy'),'Trần Văn Cường',to_date('9/5/2019','dd/MM/yyyy'),
-'tranvancuong97@gmail.com', '0976182712', 'trancuong97', 'Nhân viên', 'Hà Nội', 'Freelancer', null, '1', '1', '1', '3','0','1',to_date('12/12/1999','dd/MM/yyyy'));
-
+'tranvancuong97@gmail.com', '0976182712', 'trancuong97', 'Nhân viên', 'Hà Nội', 'Freelancer', null, '1', '2', '1', '3','0','1',to_date('12/12/1999','dd/MM/yyyy'));
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
 PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
@@ -82,34 +80,45 @@ VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'dttthao21', '123456', null, to_date('1
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
 PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
 VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'dinhquang', '123456', null, to_date('17/12/2019', 'dd/MM/yyyy'),'Trịnh Đình Quang',to_date('19/10/2017','dd/MM/yyyy'),
-'dinhquang@itsol.com', '0981267271', 'dinhquang1', 'Nhân viên', 'Hà Nội', 'HUST', '2018', '1', '3', '4', '1','1','1',to_date('8/12/1993','dd/MM/yyyy'));
+'dinhquang@itsol.com', '0981267271', 'dinhquang1', 'Nhân viên', 'Hà Nội', 'HUST', '2018', '1', '3', '2', '1','1','1',to_date('8/12/1993','dd/MM/yyyy'));
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
 PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
 VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'tonthang1', '123456', null, to_date('8/12/2019', 'dd/MM/yyyy'),'Tôn Đức Thắng',to_date('19/11/2017','dd/MM/yyyy'),
-'tonthang1@itsol.com', '036928127', 'tonthang32', 'Nhân viên', 'Hà Nội', 'PTIT', '2018', '1', '2', '4', '3','1','0',to_date('9/8/1999','dd/MM/yyyy'));
+'tonthang1@itsol.com', '036928127', 'tonthang32', 'Nhân viên', 'Hà Nội', 'PTIT', '2018', '1', '3', '1', '3','1','0',to_date('9/8/1999','dd/MM/yyyy'));
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
 PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
 VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'dangan9', '123456', null, to_date('10/10/2018', 'dd/MM/yyyy'),'Đặng Thế An',to_date('20/12/2018','dd/MM/yyyy'),
-'dangan@gmail.com', '037827192', 'dangan93', 'Nhân viên', 'Hà Nội', 'HUS', '2017', '1', '3', '2', '2','0','0',to_date('18/11/1993','dd/MM/yyyy'));
+'dangan@gmail.com', '037827192', 'dangan93', 'Nhân viên', 'Hà Nội', 'HUS', '2017', '1', '1', '2', '2','0','0',to_date('18/11/1993','dd/MM/yyyy'));
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
 PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
 VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'ngkhanhvan1', '654321', null, to_date('8/8/2019', 'dd/MM/yyyy'),'Nguyễn Khánh Vân',to_date('9/5/2019','dd/MM/yyyy'),
-'ngkhvan@yahoo.com', '0897672516', 'nkvan98', 'Thực tập', 'Hà Giang', 'VNU', '2018', '0', '1', '3', '1','0','0',to_date('19/1/1999','dd/MM/yyyy'));
+'ngkhvan@yahoo.com', '0897672516', 'nkvan98', 'Thực tập', 'Hà Giang', 'VNU', '2018', '0', '4', '3', '1','0','0',to_date('19/1/1999','dd/MM/yyyy'));
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE" (ID, USERNAME, 
-PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID) 
+PASSWORD,image_url,last_access, FULLNAME,created_date, EMAIL, PHONE_NUMBER, SKYPE_ACCOUNT, USER_TYPE, ADDRESS, UNIVERSITY, GRADUATED_YEAR, IS_ACTIVED, POSITION_ID, TEAM_ID, DEPARTMENT_ID,IS_MANAGER, IS_LEADER, BIRTHDAY) 
 VALUES (AUTO_INCRE_SEQ_EMPLOYEE.nextval, 'daothang98', '654321', null, to_date('7/2/2019', 'dd/MM/yyyy'),'Đào Đức Thắng',to_date('19/1/2019','dd/MM/yyyy'),
-'daothang@outlook.com', '036928127', 'daothang8', 'Sinh viên', 'Hà Nội', 'HUST', '2019', '0', '1', '4', '1','0','0',to_date('30/5/1998','dd/MM/yyyy'));
+'daothang@outlook.com', '036928127', 'daothang8', 'Sinh viên', 'Hà Nội', 'HUST', '2019', '0', '1', '3', '1','0','0',to_date('30/5/1998','dd/MM/yyyy'));
 commit;
-
 
 
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('1', '1');
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('2', '1');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('3', '1');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('4', '1');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('5', '1');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('6', '1');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('7', '1');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('8', '1');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('1', '2');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('2', '2');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('4', '2');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('4', '3');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('5', '3');
 INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('3', '4');
+INSERT INTO "MOCKUP_SMARTOFFICE"."EMPLOYEE_ROLE" (EMPLOYEE_ID, ROLE_ID) VALUES ('7', '4');
 commit;
 
 
