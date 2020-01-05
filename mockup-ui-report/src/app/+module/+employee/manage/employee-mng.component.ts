@@ -1,23 +1,63 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../_models/user.model';
+import {SearchEmployeeModel} from '../../../_models/request/search-employee.model';
+import {Employee} from '../../../_models/employee.model';
+import {EmployeeService} from '../../../_services/employee.service';
 
 @Component({
-    selector:"app-employee-mng",
+    selector: 'app-employee-mng',
     templateUrl: './employee-mng.component.html',
-    styleUrls: ['./employee-mng.component.css']
+    styleUrls: ['./employee-mng.component.css'],
+    providers: [EmployeeService]
 })
-export class EmployeeMngComponent implements OnInit{
+export class EmployeeMngComponent implements OnInit {
 
-    userHashCode: User[] = [
-        { id: 1, email:'abc@123', fullName: 'Tran Van A', username: 'TVA', password: null, dateOfBirth: '16/12/2019' },
-        { id: 2, email:'abc@123', fullName: 'Tran Van A', username: 'TVA', password: null, dateOfBirth: '16/12/2019' },
-        { id: 3, email:'abc@123', fullName: 'Tran Van A', username: 'TVA', password: null, dateOfBirth: '16/12/2019' }
-    ];
+    employees: Employee[] = [];
+    searchRequest: SearchEmployeeModel = new SearchEmployeeModel();
+    insertRequest: SearchEmployeeModel = new SearchEmployeeModel();
+    pageOptions: any = {
+        page: 0,
+        pageSize: 5,
+        totalRows: 0,
+        totalPages: 0
+    };
 
-    users: User[] = [];
-    constructor(){}
+    constructor(private employeeService: EmployeeService) {
+    }
+
     ngOnInit(): void {
-        this.users = this.userHashCode;
+        this.searchRequest.page = this.pageOptions.page;
+        this.searchRequest.pageSize = this.pageOptions.pageSize;
+        this.doSearch();
+    }
+
+    onPageChanged(event) {
+        console.log('-----', event);
+        this.pageOptions.page = event.page - 1;
+        this.pageOptions.pageSize = event.itemsPerPage;
+        this.doSearch();
+    }
+
+    doSearch() {
+        this.searchRequest.page = this.pageOptions.page;
+        this.searchRequest.pageSize = this.pageOptions.pageSize;
+        console.log('------- Search:', this.searchRequest);
+        this.employeeService.post('/employee-by-params', this.searchRequest).subscribe(data => {
+            if (data.code === '00') {
+                this.employees = data.datas;
+                this.pageOptions.totalPages = data.totalPages;
+                this.pageOptions.totalRows = data.totalRows;
+
+            }
+        });
+    }
+
+    doDelete(id) {
+        this.employeeService.delete('/employee-delete?id=' + id).subscribe(data => {
+            this.doSearch();
+            alert('Xoa thanh cong');
+            console.log(data);
+        });
     }
 
 }

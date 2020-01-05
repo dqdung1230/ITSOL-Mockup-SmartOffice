@@ -3,6 +3,8 @@ import {SharedModule} from '../../shared/shared.module';
 import {EmployeeComponent} from './employee.component';
 import {EmployeeRouting} from './employee.routing';
 import {EmployeeMngComponent} from './manage/employee-mng.component';
+import { InsertComponent } from './manage/insert/insert.component';
+import { DeleteComponent } from './manage/delete/delete.component';
 
 @NgModule({
   imports: [
@@ -11,7 +13,9 @@ import {EmployeeMngComponent} from './manage/employee-mng.component';
   ],
   declarations: [
     EmployeeComponent,
-    EmployeeMngComponent
+    EmployeeMngComponent,
+    InsertComponent,
+    DeleteComponent
   ],
   exports: []
 })

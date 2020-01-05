@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Errors} from '../../../_models/errors';
-import {CONSUME_API} from '../../../_services/consume-apis';
+import {CONSUME_API} from '../../../_services/consume-employees';
 import {AuthRequestModel} from '../../../_models/auth/auth-request.model';
 import {ToastrService} from 'ngx-toastr';
 import {AuthenticationService} from '../../../_services/authentication.service';
@@ -58,9 +58,9 @@ export class LoginComponent implements OnInit {
         this.autRequest.password = this.authForm.value.password;
 
         this.authService.login(this.autRequest).subscribe(res => {
-            if (res.errorCode == '00') {
+            if (res.code == '00') {
                 this.router.navigate([this.returnUrl]);
-            } else if (res.errorCode == '401') {
+            } else if (res.code == '401') {
                 this.toastr.error(this.translateService.instant('login.error.unauthorized'), 'ERROR');
             } else {
                 this.toastr.error(this.translateService.instant('login.error.err'), 'ERROR');

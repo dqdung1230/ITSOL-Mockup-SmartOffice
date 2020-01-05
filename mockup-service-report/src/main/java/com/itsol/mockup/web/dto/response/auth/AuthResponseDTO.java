@@ -15,7 +15,6 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class AuthResponseDTO extends BaseResponseDTO {
      String username;
      String password;

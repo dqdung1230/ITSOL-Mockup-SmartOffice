@@ -51,21 +51,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
             SQLQuery query = session.createSQLQuery(sb.toString());
 
             if (!DataUtils.isNullOrEmpty(requestDTO.getFullName())) {
-                query.setParameter("p_full_name", "%" +
-                        requestDTO.getFullName().trim().toUpperCase()
-                                .replace("\\", "\\\\")
-                                .replaceAll("%", "\\%")
-                                .replaceAll("_", "\\_")
-                        + "%");
+                query.setParameter("p_full_name", "%" + DataUtils.removeWildcardCharacters(requestDTO.getFullName()) + "%");
             }
 
             if (!DataUtils.isNullOrEmpty(requestDTO.getUserName())) {
-                query.setParameter("p_user_name", "%" +
-                        requestDTO.getUserName().trim().toUpperCase()
-                                .replace("\\", "\\\\")
-                                .replaceAll("%", "\\%")
-                                .replaceAll("_", "\\_")
-                        + "%");
+                query.setParameter("p_user_name", "%" + DataUtils.removeWildcardCharacters(requestDTO.getUserName()) + "%");
             }
 
             query.addScalar("id", new LongType());

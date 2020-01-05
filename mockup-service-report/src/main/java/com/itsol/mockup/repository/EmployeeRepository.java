@@ -14,7 +14,5 @@ import org.springframework.data.domain.Page;
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
     EmployeeEntity getUsersById(Long id);
 
-    Page<EmployeeEntity> getAllByUsernameAndFullName(String username, String fullName, Pageable pageable);
-
     EmployeeEntity getByUsername(String username); //function for generate token
 }

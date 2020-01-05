@@ -19,14 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -123,7 +120,7 @@ public class UsersServiceImpl implements UsersService {
                 user.setUsername(employeeDTO.getUsername());
                 user.setFullName(employeeDTO.getFullName());
                 user.setPassword(employeeDTO.getPassword());
-//                user.setRoleEntities(usersDTO.getRole());
+//                user.setRoleEntities(employeeDTO.getRoles());
                 user = employeeRepository.save(user);
                 resultDTO.setResult(modelMapper.map(user, EmployeeDTO.class));
             }
@@ -149,7 +146,7 @@ public class UsersServiceImpl implements UsersService {
                     responseDTO.setToken(tokenUtils.generateToken(springSecurityUser));
                     responseDTO.setUsername(springSecurityUser.getUsername());
                     responseDTO.setCode(Constants.ApiErrorCode.SUCCESS);
-                    responseDTO.setRoles(springSecurityUser.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet()));
+//                    responseDTO.setRoles(springSecurityUser.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet()));
                     return responseDTO;
                 }
             }

@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/api")
-@CrossOrigin
+@RequestMapping("/employee")
+@CrossOrigin("*")
 public class EmployeeController {
     @Autowired
     UsersService usersService;
 
-    @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public ResponseEntity<GetListDataResponseDTO<EmployeeDTO>> users(@RequestBody SearchEmployeeRequestDTO requestDTO) {
         GetListDataResponseDTO<EmployeeDTO> result = usersService.findAllUsers(requestDTO);
         return new ResponseEntity<GetListDataResponseDTO<EmployeeDTO>>(result, HttpStatus.OK);
@@ -44,4 +44,10 @@ public class EmployeeController {
         GetListDataResponseDTO<EmployeeDTO> result = usersService.findUsersByFullNameAndUserName(requestDTO);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+//    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+//    public ResponseEntity<GetSingleDataResponseDTO<EmployeeDTO>> delete(@RequestParam Long id ) {
+//        GetSingleDataResponseDTO<EmployeeDTO> result = usersService.deleteUser(requestDTO);
+//        return new ResponseEntity<>(result, HttpStatus.OK);
+//    }
+
 }

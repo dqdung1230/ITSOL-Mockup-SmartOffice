@@ -137,4 +137,11 @@ public class DataUtils {
     public static boolean isNullOrZero(Integer value) {
         return (value == null || value.equals(Integer.parseInt("0")));
     }
+
+    public static String removeWildcardCharacters(String input) {
+        return input.trim().toUpperCase()
+                .replace("\\", "\\\\")
+                .replaceAll("%", "\\%")
+                .replaceAll("_", "\\_");
+    }
 }

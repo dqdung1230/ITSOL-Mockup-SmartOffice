@@ -1,10 +1,7 @@
 package com.itsol.mockup.web.dto.response;
 
 import com.itsol.mockup.utils.Constants;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 /**
@@ -12,7 +9,10 @@ import lombok.experimental.FieldDefaults;
  */
 
 @Data
-@FieldDefaults(level = AccessLevel.PROTECTED)
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class BaseResponseDTO {
      String message;
      String code;
@@ -35,13 +35,5 @@ public class BaseResponseDTO {
     public void setFailed(String msg) {
         this.code = Constants.ApiErrorCode.ERROR;
         this.message = msg;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseResponse{" +
-                "message='" + message + '\'' +
-                ", code=" + code +
-                '}';
     }
 }

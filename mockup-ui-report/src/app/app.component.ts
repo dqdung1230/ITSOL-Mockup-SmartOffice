@@ -9,8 +9,8 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
   constructor(translateService: TranslateService, private router: Router) {
-    console.log('INIT APP')
+    console.log('INIT APP');
   }
 
-  title = 'AngularMockup';
+  title = 'SmartOffice';
 }

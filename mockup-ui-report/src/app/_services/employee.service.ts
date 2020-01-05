@@ -5,13 +5,13 @@ import { Observable, throwError } from 'rxjs';
 import {environment} from '../../environments/environment';
 
 @Injectable()
-export class ApiService {
+export class EmployeeService {
     constructor(
         private http: HttpClient,
     ) { }
 
     get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-        return this.http.get(`${environment.api_url}${path}`, { params })
+        return this.http.get(`${environment.employee_url}${path}`, { params })
             .pipe(catchError(err => {
                 return throwError(err);
             }));
@@ -19,7 +19,7 @@ export class ApiService {
 
     put(path: string, body: Object = {}): Observable<any> {
         return this.http.put(
-            `${environment.api_url}${path}`,
+            `${environment.employee_url}${path}`,
             JSON.stringify(body)
         ).pipe(catchError(err => {
             return throwError(err);
@@ -28,7 +28,7 @@ export class ApiService {
 
     post(path: string, body: Object = {}): Observable<any> {
         return this.http.post(
-            `${environment.api_url}${path}`,
+            `${environment.employee_url}${path}`,
             body).pipe(catchError(err => {
             return throwError(err);
         }));
@@ -36,7 +36,7 @@ export class ApiService {
 
     delete(path): Observable<any> {
         return this.http.delete(
-            `${environment.api_url}${path}`
+            `${environment.employee_url}${path}`
         ).pipe(catchError(err => {
             return throwError(err);
         }));

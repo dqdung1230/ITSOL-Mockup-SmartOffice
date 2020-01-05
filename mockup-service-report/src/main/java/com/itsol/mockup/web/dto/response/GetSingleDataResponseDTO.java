@@ -1,16 +1,19 @@
 package com.itsol.mockup.web.dto.response;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 /**
  * @author anhvd_itsol
  */
 
-@Getter
-@Setter
+@Data
+@ToString(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class GetSingleDataResponseDTO<T> extends BaseResponseDTO {
-    private T data;
+     T data;
 
     private void setSuccess(T data) {
         super.setSuccess();
@@ -24,12 +27,5 @@ public class GetSingleDataResponseDTO<T> extends BaseResponseDTO {
             this.setSuccess(data);
     }
 
-    @Override
-    public String toString() {
-        return "GetSingleResponse {" +
-                "data = " + data +
-                ", message = " + message + '\'' +
-                ", code = " + code +
-                "}";
-    }
+
 }
