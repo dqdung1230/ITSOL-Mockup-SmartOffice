@@ -1,6 +1,6 @@
 package com.itsol.mockup.web.rest.auth;
 
-import com.itsol.mockup.services.UsersService;
+import com.itsol.mockup.services.EmployeeService;
 import com.itsol.mockup.web.dto.request.auth.AuthRequestDTO;
 import com.itsol.mockup.web.dto.response.auth.AuthResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Scope("request")
 public class AuthenticationController {
     @Autowired
-    UsersService usersService;
+    EmployeeService employeeService;
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<AuthResponseDTO> getToken(@RequestBody AuthRequestDTO userForAuthentication) {
-        AuthResponseDTO authenticationResponse = usersService.generateToken(userForAuthentication);
+        AuthResponseDTO authenticationResponse = employeeService.generateToken(userForAuthentication);
         return new ResponseEntity(authenticationResponse, HttpStatus.OK);
     }
 }

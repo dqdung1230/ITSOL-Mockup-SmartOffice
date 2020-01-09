@@ -58,8 +58,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() //Request configuration
                 .antMatchers("/auth").permitAll()//Permit all from this path
 //                .antMatchers("/api").hasAnyAuthority("ROLE_ADMIN,ROLE_USER")
-                .anyRequest().authenticated(); //From any request check the authentication
-
+//                .anyRequest().authenticated(); //From any request check the authentication
+;
         //Filter for JWT based authentication
         httpSecurity
                 .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);

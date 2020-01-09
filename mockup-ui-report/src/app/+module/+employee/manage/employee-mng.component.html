@@ -5,36 +5,84 @@
                 <span>Ho ten</span>
             </div>
             <div class="col-md-6 col-sm-6">
-                <input placeholder="Nhập họ tên" class="form-control">
+                <input placeholder="Nhập họ tên" class="form-control" [(ngModel)]="searchRequest.fullName">
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <span>Dia chi</span>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <input placeholder="Dia chi" class="form-control" [(ngModel)]="searchRequest.address">
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <button class="btn btn-primary" (click)="doSearch()">Search</button>
+    </div>
+
+    <!--    button insert-->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertModal">
+        New Employee
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="insertModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label>Ho ten</label>
+                        <input type = "text" name="empName" [(ngModel)]="insertRequest.empName">
+                        <label>Dia chi</label>
+                        <input type = "text" name="address" [(ngModel)]="insertRequest.address">
+
+                    </form>
+                    <!--                    form, label, checkbox-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="doInsert()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="form-group">
-        <h3>Danh sách User</h3>
+        <h3>Danh sách nhân viên</h3>
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                 <tr class="text-center">
                     <th class="text-center">STT</th>
-                    <th class="text-center">Ho Ten</th>
-                    <th class="text-center">Gioi tinh</th>
+                    <th class="text-center">Họ tên</th>
+                    <th class="text-center">Lần truy cập cuối</th>
+                    <th class="text-center">Ngày lập tài khoản</th>
                     <th class="text-center">Email</th>
-                    <th class="text-center">Dia chi</th>
-                    <th class="text-center">Date Of Birth</th>
+                    <th class="text-center">Ngày sinh</th>
+                    <th class="text-center"></th>
+                    <th class="text-center">Ngày sinh</th>
+
                     <th class="text-center" style="width: 250px">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let u of users; let i = index">
-                    <td class="text-center"> {{i}} </td>
+                <tr *ngFor="let u of employees; let i = index">
+                    <td class="text-center"> {{i + 1 + (pageOptions.pageSize * pageOptions.page)}} </td>
                     <td> {{u.fullName}} </td>
-                    <td> {{u.gender}} </td>
+                    <td> {{u.gender == 0 ? 'Nu' : 'Nam'}} </td>
                     <td> {{u.email}} </td>
                     <td> {{u.address}} </td>
-                    <td> {{u.dateOfBirth | date:'DD/MM/YYYY'}} </td>
+                    <td> {{u.dateOfBirth | date:'dd/MM/yyyy'}} </td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button
+                            <button (click)="doInsert()"
                                     class="btn btn-info btn-sm">
                                 <i class="fa fa-eye"></i>
                                 <span class="d-none d-md-inline">View</span>
@@ -44,7 +92,7 @@
                                 <i class="fa fa-pencil"></i>
                                 <span class="d-none d-md-inline">Edit</span>
                             </button>
-                            <button type="submit"
+                            <button (click)="doDelete(u.id)"
                                     class="btn btn-danger btn-sm">
                                 <i class="fa fa-trash"></i>
                                 <span class="d-none d-md-inline">Delete</span>
@@ -55,5 +103,14 @@
                 </tbody>
             </table>
         </div>
+        <pagination [boundaryLinks]="true"
+                    [totalItems]="pageOptions.totalRows"
+                    [itemsPerPage]="pageOptions.pageSize"
+                    [maxSize]="pageOptions.pageSize"
+                    (pageChanged)="onPageChanged($event)"
+                    [(ngModel)]="pageNumber"
+                    previousText="&lsaquo;"
+                    nextText="&rsaquo;" firstText="&laquo;"
+                    lastText="&raquo;"></pagination>
     </div>
 </div>

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   employee_url: 'http://localhost:8008/employee',
-  auth_url: 'http://localhost:8008/auth'
+  auth_url: 'http://localhost:8008/api/authenticate',
+  get_profile: 'http://localhost:8008/api/user/get-profile'
 };
 /*
  * For easier debugging in development mode, you can import the following file

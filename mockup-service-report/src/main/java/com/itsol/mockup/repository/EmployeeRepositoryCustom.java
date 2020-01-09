@@ -9,5 +9,5 @@ import org.springframework.data.domain.Page;
  */
 public interface EmployeeRepositoryCustom {
 
-    Page<EmployeeDTO> findUsersByFullNameAndUserName(SearchEmployeeRequestDTO requestDTO);
+    Page<EmployeeDTO> findUsersByFullNameAndUsername(SearchEmployeeRequestDTO requestDTO);
 }

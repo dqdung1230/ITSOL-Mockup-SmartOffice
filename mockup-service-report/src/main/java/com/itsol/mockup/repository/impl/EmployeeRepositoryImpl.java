@@ -33,7 +33,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom {
     private static final Logger logger = LogManager.getLogger(EmployeeRepositoryImpl.class);
 
     @Override
-    public Page<EmployeeDTO> findUsersByFullNameAndUserName(SearchEmployeeRequestDTO requestDTO) {
+    public Page<EmployeeDTO> findUsersByFullNameAndUsername(SearchEmployeeRequestDTO requestDTO) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();

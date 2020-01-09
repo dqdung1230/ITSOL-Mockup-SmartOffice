@@ -54,17 +54,20 @@ export class LoginComponent implements OnInit {
 
         let url = CONSUME_API.AUTH.logIn;
 
-        this.autRequest.username = this.authForm.value.username;
+        this.autRequest.login = this.authForm.value.username;
         this.autRequest.password = this.authForm.value.password;
 
         this.authService.login(this.autRequest).subscribe(res => {
-            if (res.code == '00') {
+            this.authService.getProfile().subscribe(resp => {
+                sessionStorage.setItem('USER_PROFILE', JSON.stringify(resp));
+            });
+            /*if (res.code === '00') {
                 this.router.navigate([this.returnUrl]);
-            } else if (res.code == '401') {
+            } else if (res.code === '401') {
                 this.toastr.error(this.translateService.instant('login.error.unauthorized'), 'ERROR');
             } else {
                 this.toastr.error(this.translateService.instant('login.error.err'), 'ERROR');
-            }
+            }*/
         }, err => {
             this.toastr.error(this.translateService.instant('login.error.err'), 'ERROR');
         });

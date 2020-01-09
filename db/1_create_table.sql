@@ -2,7 +2,7 @@
 
 CREATE TABLE role (
     id     NUMBER(10) PRIMARY KEY,
-    name   VARCHAR2(255) NOT NULL
+    name   VARCHAR2(255)
 );
 
 CREATE TABLE employee_role (
@@ -14,9 +14,8 @@ CREATE TABLE employee_role (
 
 CREATE TABLE department (
     id           NUMBER(10) PRIMARY KEY,
-    manager_id   NUMBER(10) NOT NULL,
-    name         VARCHAR2(255) NOT NULL,
-    location     VARCHAR2(255) NOT NULL
+    name         VARCHAR2(255),
+    location     VARCHAR2(255)
 );
 
 CREATE TABLE status_type (
@@ -61,7 +60,7 @@ CREATE TABLE team_project (
 
 CREATE TABLE team (
     id          NUMBER(10) PRIMARY KEY,
-    leader_id   NUMBER(10) NOT NULL
+    name        varchar2(200)
 );
 
 CREATE TABLE employee_issue (

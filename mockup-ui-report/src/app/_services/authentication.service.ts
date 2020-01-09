@@ -22,15 +22,17 @@ export class AuthenticationService {
 
     login(object: any) {
         return this.http.post<any>(`${environment.auth_url}`, object)
-            .pipe(map(user => {
+            .pipe(map(resp => {
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
+                // if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.currentUserSubject.next(user);
-                }
+                //     localStorage.setItem('currentUser', JSON.stringify(user));
+                //     this.currentUserSubject.next(user);
+                // }
 
-                return user;
+                // return user;
+                const jwt = resp.headers.get('Authorization');
+                localStorage.setItem('Authorization', jwt);
             }));
     }
 
@@ -38,5 +40,9 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+    }
+
+    getProfile() {
+       return this.http.get(`${environment.get_profile}`);
     }
 }

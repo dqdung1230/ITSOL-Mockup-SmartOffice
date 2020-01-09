@@ -9,7 +9,7 @@ import { DeleteComponent } from './manage/delete/delete.component';
 @NgModule({
   imports: [
     SharedModule,
-    EmployeeRouting
+    EmployeeRouting,
   ],
   declarations: [
     EmployeeComponent,

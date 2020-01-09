@@ -14,7 +14,6 @@ import {ErrorInterceptor} from './_services/interceptors/error.interceptor';
 import {UserModule} from './+module/+user/user.module';
 import {EmployeeModule} from './+module/+employee/employee.module';
 
-
 @NgModule({
     declarations: [AppComponent],
     imports: [

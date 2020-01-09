@@ -42,7 +42,7 @@ export class EmployeeMngComponent implements OnInit {
         this.searchRequest.page = this.pageOptions.page;
         this.searchRequest.pageSize = this.pageOptions.pageSize;
         console.log('------- Search:', this.searchRequest);
-        this.employeeService.post('/employee-by-params', this.searchRequest).subscribe(data => {
+        this.employeeService.post('/find-by-params', this.searchRequest).subscribe(data => {
             if (data.code === '00') {
                 this.employees = data.datas;
                 this.pageOptions.totalPages = data.totalPages;
@@ -60,4 +60,7 @@ export class EmployeeMngComponent implements OnInit {
         });
     }
 
+    doInsert() {
+
+    }
 }

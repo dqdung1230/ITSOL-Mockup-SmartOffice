@@ -11,6 +11,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {ListErrorsComponent} from './layout/list-errors/list-errors.component';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {PaginationModule} from 'ngx-bootstrap';
+import {EmployeeService} from '../_services/employee.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,6 +28,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         HttpClientModule,
         RouterModule,
         NgbModule,
+        NgxPaginationModule,
+        PaginationModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -54,9 +59,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         ListErrorsComponent,
         // ShowAuthedDirective
         TranslateModule,
-        ToastrModule
+        ToastrModule,
+        NgxPaginationModule,
+        PaginationModule
     ],
-    providers: []
+    providers: [EmployeeService]
 })
 export class SharedModule {
     constructor(private translate: TranslateService) {
