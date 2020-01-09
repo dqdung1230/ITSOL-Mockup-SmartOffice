@@ -13,11 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
-
 public class PositionEntity implements Serializable {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AUTO_INCRE_SEQ_POSITION")
     @SequenceGenerator(name = "AUTO_INCRE_SEQ_POSITION", sequenceName = "AUTO_INCRE_SEQ_POSITION", allocationSize = 1)
@@ -26,5 +22,4 @@ public class PositionEntity implements Serializable {
     @Column(name = "name")
     String name;
 
-//    public PositionEntity (Long id, String name){}
 }

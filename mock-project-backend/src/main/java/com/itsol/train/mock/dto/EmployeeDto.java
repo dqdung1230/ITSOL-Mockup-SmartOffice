@@ -47,9 +47,11 @@ public class EmployeeDto {
     Set<RoleEntity> roleEntities;
 
     public EmployeeDto(EmployeeEntity employeeEntity) {
-        this.id = employeeEntity.getId();
-        this.username = employeeEntity.getUsername();
-        this.email = employeeEntity.getEmail();
-        this.roleEntities = employeeEntity.getRoleEntities();
+        if (employeeEntity != null) {
+            this.id = employeeEntity.getId();
+            this.username = employeeEntity.getUsername();
+            this.email = employeeEntity.getEmail();
+            this.roleEntities = employeeEntity.getRoleEntities();
+        }
     }
 }

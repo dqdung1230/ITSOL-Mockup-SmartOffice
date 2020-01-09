@@ -21,6 +21,7 @@ public interface EmployeeService {
      *
      * @return Optional<User>
      */
+
     Optional<EmployeeEntity> getEmployeeWithRoles();
     boolean resetPassword(String email) throws UsernameNotFoundException;
 }

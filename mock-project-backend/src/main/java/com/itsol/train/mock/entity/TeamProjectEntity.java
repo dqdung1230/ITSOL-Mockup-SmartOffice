@@ -15,8 +15,6 @@ import java.util.Date;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TeamProjectEntity implements Serializable {
-
-
     @EmbeddedId
     TeamProjectPK teamProjectPK;
 

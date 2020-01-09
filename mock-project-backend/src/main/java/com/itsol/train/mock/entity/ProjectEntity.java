@@ -13,11 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@EqualsAndHashCode
-
 public class ProjectEntity implements Serializable {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AUTO_INCRE_SEQ_PROJECT")
     @SequenceGenerator(name = "AUTO_INCRE_SEQ_PROJECT", sequenceName = "AUTO_INCRE_SEQ_PROJECT", allocationSize = 1)

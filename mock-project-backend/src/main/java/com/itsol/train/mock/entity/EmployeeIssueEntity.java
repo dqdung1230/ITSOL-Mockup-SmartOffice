@@ -13,10 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class EmployeeIssueEntity implements Serializable {
-
-
 
     @EmbeddedId
     EmpIssuePK empIssuePK;

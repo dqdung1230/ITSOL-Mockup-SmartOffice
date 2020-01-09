@@ -28,7 +28,4 @@ public class DepartmentEntity implements Serializable {
     @Column(name = "location")
     String location;
 
-//    public DepartmentEntity(Long id, Long managerId, String name, String location){
-//
-//    }
 }

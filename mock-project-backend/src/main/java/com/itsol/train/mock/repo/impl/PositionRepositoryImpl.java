@@ -20,8 +20,8 @@ public class PositionRepositoryImpl implements PositionRepository {
 
         try {
             session.beginTransaction();
-            Query query = session.createQuery("select s from PositionEntity s where s.id = 0 ");
-            PositionEntity singleResult = (PositionEntity) query.getSingleResult();
+            Query<PositionEntity> query = session.createQuery("select s from PositionEntity s where s.id = 0 ");
+            PositionEntity singleResult = query.getSingleResult();
             session.getTransaction().commit();
             return singleResult;
         } catch (HibernateException e) {

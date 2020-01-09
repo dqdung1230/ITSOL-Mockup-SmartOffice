@@ -19,8 +19,8 @@ public class TeamRepositoryImpl implements TeamRepository {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            Query query = session.createQuery("select s from TeamEntity s where s.id = 0");
-            TeamEntity teamEntity = (TeamEntity) query.getSingleResult();
+            Query<TeamEntity> query = session.createQuery("select s from TeamEntity s where s.id = 0");
+            TeamEntity teamEntity = query.getSingleResult();
             session.getTransaction().commit();
             return teamEntity;
         } catch (HibernateException e) {

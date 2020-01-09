@@ -44,8 +44,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @Override
+    @Transactional
     public void register(EmployeeDto employeeDto) throws UsernameExistException, EmailExistException {
         log.trace("Service to register user in web site");
         String username = employeeDto.getUsername();
@@ -59,7 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         EmployeeEntity entity = modelMapper.map(employeeDto, EmployeeEntity.class);
         entity.setPassword(passwordEncoder.encode(entity.getPassword()));
-        entity.setIsActived(Boolean.TRUE);
+        entity.setIsActived(Boolean.FALSE);
 
         RoleEntity roleDefault = roleRepository.findByDefault();
         Set<RoleEntity> roleEntities = new HashSet<>();

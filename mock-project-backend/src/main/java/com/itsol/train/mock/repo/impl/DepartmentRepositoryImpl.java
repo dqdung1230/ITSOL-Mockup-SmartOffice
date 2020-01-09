@@ -19,8 +19,8 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            Query query = session.createQuery("select s from DepartmentEntity s where s.id = 0");
-            DepartmentEntity singleResult = (DepartmentEntity) query.getSingleResult();
+            Query<DepartmentEntity> query = session.createQuery("select s from DepartmentEntity s where s.id = 0");
+            DepartmentEntity singleResult = query.getSingleResult();
             session.getTransaction().commit();
             return singleResult;
         } catch (HibernateException e) {

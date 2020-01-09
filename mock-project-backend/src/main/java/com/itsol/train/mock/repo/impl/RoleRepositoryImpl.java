@@ -27,9 +27,9 @@ public class RoleRepositoryImpl implements RoleRepository {
             session.getTransaction().rollback();
             logger.error(e.getMessage());
         }
-//        finally {
-//            session.close();
-//        }
+        finally {
+            session.close();
+        }
         return null;
 
     }
