@@ -1,0 +1,83 @@
+<div>
+    <h1 class="subheader-title">
+        Danh sách nhân viên
+    </h1>
+</div>
+<div>
+    <button class="btn btn-sm btn-primary mb-3 mt-3" [disabled]="listIdChecked.length == 0">
+        Xóa
+    </button>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr class="text-center">
+            <th><input type="checkbox" [(ngModel)]="allChecked" (change)="checkAll()"></th>
+            <th class="text-center" scope="col">STT</th>
+            <th class="text-center" scope="col">Họ và tên</th>
+            <th class="text-center" scope="col">Tên người dùng</th>
+            <th class="text-center" scope="col">Email</th>
+            <th class="text-center" scope="col">Số điện thoại</th>
+            <th class="text-center" scope="col">Skype</th>
+            <th class="text-center" scope="col">Chức vụ</th>
+            <th class="text-center" scope="col">Phòng ban</th>
+            <th class="text-center" scope="col">Team</th>
+            <th class="text-center" scope="col">Trạng thái tài khoản</th>
+            <th class="text-center" scope="col">Ngày vào công ty</th>
+            <th class="text-center" scope="col">Lần đăng nhập gần nhất</th>
+            <th class="text-center" style="max-width: 150px" scope="col">Actions</th>
+            <th class="text-center" scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let e of employee; let i = index">
+            <th scope="row">
+                <input type="checkbox" (change)="checkAll()"/>
+            </th>
+            <td class="text-center">{{i + 1 + (pageOptions.page * pageOptions.pageSize)}}</td>
+            <td class="text-center" scope="row">{{e.fullName}}</td>
+            <td class="text-center" scope="row">{{e.username}}</td>
+            <td class="text-center" scope="row">{{e.email}}</td>
+            <td class="text-center" scope="row">{{e.phoneNumber}}</td>
+            <td class="text-center" scope="row">{{e.skypeAccount}}</td>
+            <td class="text-center" scope="row">{{e.positionName}}</td>
+            <td class="text-center" scope="row">{{e.departmentName}}</td>
+            <td class="text-center" scope="row">{{e.teamName}}</td>
+            <td class="text-center" scope="row">{{e.isActived | activeBlocked }}</td>
+            <td class="text-center" scope="row">{{e.createdDate | date: 'yyyy/MM/dd'}}</td>
+            <td class="text-center" scope="row">{{e.lastAccess | date: 'yyyy/MM/dd'}}</td>
+            <td class="text-center" scope="row" style="width: auto;height: 200px">
+                <input type ='file' (change)="onSelectFile($event)">
+<!--                <div class="form-group">-->
+<!--                    <label for="file">Choose File</label>-->
+<!--                    <input type="file"-->
+<!--                           id="file"-->
+<!--                           (change)="handleFileInput($event.target.files)">-->
+<!--                </div>-->
+            </td>
+            <!--                        <td class="text-center">-->
+            <!--                <div class="btn-group">-->
+            <!--                    <div hasAnyRole="HR">-->
+            <!--                        <button class="btn btn-info btn-sm" type="submit" (click)="openModal()">-->
+            <!--                            <i class="fa fa-pencil"></i>-->
+            <!--                            <span class="d-none d-md-inline">Sửa</span>-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-responsive d-flex justify-content-center">
+    <pagination [boundaryLinks]="true"
+                [totalItems]="pageOptions.totalRows"
+                [itemsPerPage]="pageOptions.pageSize"
+                [maxSize]="pageOptions.pageSize"
+                (pageChanged)="onPageChanged($event)"
+                previousText="&lsaquo;"
+                nextText="&rsaquo;"
+                firstText="&laquo;"
+                lastText="&raquo;"></pagination>
+</div>
